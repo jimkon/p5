@@ -1,6 +1,7 @@
 # misc
 core/*
 empty-example/*
+tf.empty-example/*
 
 # not finished
 regex/*
