@@ -1,23 +1,22 @@
 function show(model, x, y, w, h) {
+
+  let nodes = build_graph(model)
+
+  let max_layers_size = 0;
+  for (var i = 0; i < nodes.length; i++) {
+    if (nodes[i].length > max_layers_size) {
+      max_layers_size = nodes[i].length
+    }
+  }
+
+  let layer_w = w / nodes.length
+  let node_size = min(0.2 * layer_w, 0.5 * h / max_layers_size)
+
   let background_color = 50;
   fill(background_color)
   stroke(background_color)
   strokeWeight(1)
   rect(x, y, w, h)
-
-  let layers = model.layers.length + 1
-  let layer_w = w / layers
-  let node_size = layer_w * 0.2
-
-  stroke(255)
-  fill(255)
-    // for (var i = 1; i < layers; i++) {
-    //   line(layer_w * i, y, layer_w * i, y + h)
-    // }
-
-  let nodes = build_graph(model)
-
-  // console.log(nodes)
 
   w_range = {
     'min': 1e10,
